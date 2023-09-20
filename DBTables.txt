@@ -1,0 +1,40 @@
+-> create database
+
+ create database ibn;
+---------------------
+
+-> use database
+
+ use ibn;
+---------------------
+->create tables
+
+->customer table
+
+ create table customer(customerid integer primary key, name varchar(20), email varchar(30), mobile double, address varchar(50));
+
+->insert data in customer table
+
+ insert into customer values(1,'John','john@gmail.com',9847563841,'Pune');
+ insert into customer values(2,'Sam','sam@gmail.com',9493385746,'Mumbai');
+---------------------
+
+->account table
+
+ create table account(accountid integer primary key, accounttype varchar(20), balance double, customerid  integer,constraint pfrkey foreign key(customerid) references customer(customerid));
+
+->insert data in account table
+
+ insert into account values(1,'savings',35000,1);
+ insert into account values(2,'current',40000,2);
+---------------------
+
+->transaction table
+
+ create table transaction(transactionid integer primary key,accountid integer,transactiontype varchar(20),amount double, date date,description varchar(100), constraint frkey foreign key(accountid) references account(accountid));
+
+-> insert data into transaction table;
+
+ insert into transaction values(1,2,'check deposit',30000,'2023-05-04','deposited to buisness account');
+ insert into transaction values(2,1,'Bill Payment',15000,'2023-06-03','payed to merchant');
+---------------------
